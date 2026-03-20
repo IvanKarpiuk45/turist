@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ресторан Турист | Яремче</title>
+    <title>Ресторан Турист Яремче | Справжня гуцульська кухня та жива музика</title>
+    
+    <meta name="description" content="Ресторан 'Турист' у Яремче — найкраще місце, щоб спробувати справжній бограч, банош та гуцульську печеню. Бенкетний зал на 100 осіб та жива музика під замовлення.">
+    <meta name="keywords" content="ресторан Яремче, де поїсти Яремче, гуцульська кухня, бограч Яремче, банош, жива музика Яремче, бенкетний зал Яремче">
+    <meta name="author" content="Prime Script">
+
     <style>
         /* CSS ЗМІННІ ДЛЯ ТЕМ */
         :root {
@@ -39,7 +44,7 @@
         }
 
         body {
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-secondary);
             background-color: var(--bg-color);
@@ -62,6 +67,7 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .header .container {
@@ -97,7 +103,8 @@
             border-radius: 50%;
             cursor: pointer;
             display: flex; justify-content: center; align-items: center;
-            font-size: 16px;
+            font-size: 14px;
+            font-weight: bold;
         }
         .icon-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
 
@@ -106,29 +113,24 @@
         /* ГОЛОВНИЙ ЕКРАН */
         .hero {
             position: relative;
-            background: url('hero-bg.jpeg') center/cover no-repeat;
-            min-height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpeg') center/cover no-repeat;
+            min-height: 75vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 50px 0;
+            color: white;
         }
 
-        /* ПОВНІСТЮ ПРОЗОРА ПАНЕЛЬ */
         .hero-glass {
-            background: transparent;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
             padding: 30px 20px;
-            max-width: 700px;
-            border: none;
-            box-shadow: none;
+            max-width: 850px;
             margin: 20px;
         }
 
-        .hero-glass h2 { color: #fff; font-size: 46px; margin-bottom: 20px; font-weight: 800; line-height: 1.2; text-shadow: 1px 1px 4px rgba(0,0,0,0.6);}
-        .hero-glass p { color: #f0f0f0; font-size: 18px; margin-bottom: 40px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
+        .hero-glass h1 { color: #fff; font-size: clamp(32px, 5vw, 56px); margin-bottom: 20px; font-weight: 800; line-height: 1.2; text-shadow: 2px 2px 8px rgba(0,0,0,0.7);}
+        .hero-glass p { color: #f0f0f0; font-size: clamp(16px, 2vw, 20px); margin-bottom: 40px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
 
         .btn {
             display: inline-block;
@@ -140,33 +142,50 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+            transition: 0.3s transform ease;
         }
-        .btn:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn:hover { background-color: var(--accent-hover); transform: translateY(-3px); }
 
         /* СЕКЦІЇ */
         section { padding: 80px 0; }
-        .section-title { font-size: 36px; margin-bottom: 50px; text-align: center; }
-        .about p { max-width: 800px; margin: 0 auto; font-size: 18px; text-align: center; }
+        .section-title { font-size: 36px; margin-bottom: 40px; text-align: center; position: relative; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent-color); margin: 10px auto; }
+        
+        .about-content { max-width: 900px; margin: 0 auto; font-size: 18px; text-align: center; color: var(--text-secondary); }
+        .about-content strong { color: var(--accent-color); }
 
         /* МЕНЮ СТРАВ */
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .menu-item {
-            background: transparent;
-            padding: 30px 0;
-            border-radius: 0;
-            box-shadow: none;
-            border: none;
-            border-bottom: 1px solid var(--border-color);
+        .menu-category { margin-bottom: 50px; }
+        .category-title { 
+            font-size: 24px; color: var(--accent-color); 
+            margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;
+            text-align: center;
         }
-        .menu-item-header { display: flex; align-items: center; margin-bottom: 15px; }
-        .menu-item h3 { font-size: 22px; color: var(--accent-color); }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .menu-card {
+            background: var(--surface-color);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+        .menu-card:hover { border-color: var(--accent-color); transform: translateY(-3px); }
+        .dish-info h4 { font-size: 18px; margin-bottom: 8px; color: var(--text-main); }
+        .dish-info p { font-size: 14px; color: var(--text-secondary); opacity: 0.8; }
+        .dish-price { font-weight: bold; color: var(--text-main); white-space: nowrap; margin-left: 15px; font-size: 18px; }
 
         /* ВІДГУКИ */
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .review-card {
-            background: transparent;
-            padding: 30px 0;
-            border-bottom: 1px solid var(--border-color);
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
         }
         .stars { color: var(--star-color); font-size: 20px; margin-bottom: 15px; letter-spacing: 2px; }
         .review-text { font-style: italic; margin-bottom: 20px; font-size: 16px; }
@@ -178,15 +197,15 @@
         .contact-info p { margin-bottom: 20px; font-size: 18px; display: flex; align-items: center; gap: 10px;}
         .contact-info a { color: var(--accent-color); text-decoration: none; font-weight: 500;}
         
-        .map-container { width: 100%; height: 350px; border-radius: 16px; overflow: hidden; }
+        .map-container { width: 100%; height: 350px; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
         .map-container iframe { width: 100%; height: 100%; border: none; }
 
-        .copyright { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 14px; }
+        .copyright { text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border-color); font-size: 14px; opacity: 0.7; }
 
         /* АДАПТИВНІСТЬ */
         @media (max-width: 900px) {
             .footer-grid { grid-template-columns: 1fr; }
-            .hero-glass h2 { font-size: 32px; }
+            .hero-glass h1 { font-size: 36px; }
         }
         @media (max-width: 768px) {
             .burger { display: block; }
@@ -195,9 +214,11 @@
                 top: 100%; left: 0; width: 100%;
                 background-color: var(--surface-color);
                 padding: 20px 0; border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
             }
             .nav.active { display: flex; }
             .controls { margin-left: auto; margin-right: 20px; }
+            .menu-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -205,7 +226,7 @@
 
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">
+            <a href="#" class="logo" title="На головну - Ресторан Турист">
                 <div class="logo-circle">
                     <p class="logo-text-small">Restaurant</p>
                     <p class="logo-text-large">TURYST</p>
@@ -221,9 +242,9 @@
                 </nav>
                 
                 <div class="controls">
-                    <button class="icon-btn" id="langBtn">EN</button>
-                    <button class="icon-btn" id="themeBtn">🌙</button>
-                    <button class="burger" id="burgerBtn">☰</button>
+                    <button class="icon-btn" id="langBtn" aria-label="Змінити мову">EN</button>
+                    <button class="icon-btn" id="themeBtn" aria-label="Змінити тему">🌙</button>
+                    <button class="burger" id="burgerBtn" aria-label="Меню">☰</button>
                 </div>
             </div>
         </div>
@@ -231,63 +252,96 @@
 
     <section class="hero">
         <div class="hero-glass">
-            <h2 data-key="hero_title">Справжній смак у серці Яремче</h2>
-            <p data-key="hero_desc">Українська, домашня та європейська кухня. Жива музика та незабутня атмосфера для вашого відпочинку.</p>
+            <h1 data-key="hero_title">Ресторан "Турист" — смак традицій у серці Яремче</h1>
+            <p data-key="hero_desc">Запрошуємо скуштувати справжню гуцульську та українську кухню. Домашній затишок, жива музика та найкращі страви Карпат чекають на вас щодня.</p>
             <a href="#contacts" class="btn" data-key="hero_btn">Забронювати столик</a>
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title" data-key="about_title">Про ресторан</h2>
-            <p data-key="about_desc">Ресторан "Турист" — це ідеальне місце для сімейних обідів, романтичних вечерь та гучних святкувань. Ми пропонуємо затишний бенкетний зал на 100 осіб, а для любителів вечірнього відпочинку працює кальянна та жива музика.</p>
-        </div>
-    </section>
-
-    <section id="food-menu">
-        <div class="container">
-            <h2 class="section-title" data-key="menu_title">Популярні страви</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h3 data-key="dish1_name">Бограч</h3>
-                    </div>
-                    <p data-key="dish1_desc">Традиційний густий суп з кількома видами м'яса, паприкою та овочами.</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h3 data-key="dish2_name">Банош з бринзою</h3>
-                    </div>
-                    <p data-key="dish2_desc">Кукурудзяна каша, зварена на домашній сметані, подається з овечою бринзою та шкварками.</p>
-                </div>
-                <div class="menu-item">
-                    <div class="menu-item-header">
-                        <h3 data-key="dish3_name">Печеня по-гуцульськи</h3>
-                    </div>
-                    <p data-key="dish3_desc">Деруни, соус, м'ясо та сир.</p>
-                </div>
+            <h2 class="section-title" data-key="about_title">Про наш ресторан в Яремче</h2>
+            <div class="about-content">
+                <p data-key="about_desc">Ресторан <strong>"Турист"</strong> — це легендарне місце в місті Яремче, де поєднуються карпатська гостинність та високий рівень обслуговування. Наш заклад ідеально підходить для тих, хто шукає, де смачно поїсти в Яремче. Ми пропонуємо затишний бенкетний зал на 100 осіб для весіль та ювілеїв, а жива музика під замовлення створює неповторну атмосферу відпочинку.</p>
             </div>
         </div>
     </section>
 
-    <section id="reviews" style="background-color: rgba(0,0,0,0.02);">
+    <section id="food-menu" style="background-color: rgba(39, 174, 96, 0.05);">
+        <div class="container">
+            <h2 class="section-title" data-key="menu_title">Меню нашого ресторану</h2>
+            
+            <div class="menu-category">
+                <h3 class="category-title" data-key="cat_first">Перші страви</h3>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="dish-info">
+                            <h4 data-key="dish_bograch">Бограч</h4>
+                            <p data-key="desc_bograch">Традиційний гострий суп з трьома видами м'яса та паприкою</p>
+                        </div>
+                        <span class="dish-price">145 ₴</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="dish-info">
+                            <h4 data-key="dish_borsch">Борщ український</h4>
+                            <p data-key="desc_borsch">З яловичиною, подається зі сметаною та зеленню</p>
+                        </div>
+                        <span class="dish-price">120 ₴</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="dish-info">
+                            <h4 data-key="dish_yushka">Грибна юшка</h4>
+                            <p data-key="desc_yushka">З білих карпатських грибів та домашньою локшиною</p>
+                        </div>
+                        <span class="dish-price">135 ₴</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 class="category-title" data-key="cat_main">Основні страви</h3>
+                <div class="menu-grid">
+                    <div class="menu-card">
+                        <div class="dish-info">
+                            <h4 data-key="dish_banosh">Банош з бринзою та шкварками</h4>
+                            <p data-key="desc_banosh">Кукурудзяна крупа на вершках з овечою бринзою та шкварками</p>
+                        </div>
+                        <span class="dish-price">160 ₴</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="dish-info">
+                            <h4 data-key="dish_pechenya">Печеня по-гуцульськи</h4>
+                            <p data-key="desc_pechenya">Картопля, м'ясо та гриби у глиняному горщику</p>
+                        </div>
+                        <span class="dish-price">195 ₴</span>
+                    </div>
+                    <div class="menu-card">
+                        <div class="dish-info">
+                            <h4 data-key="dish_deruny">Деруни зі сметаною</h4>
+                            <p data-key="desc_deruny">Терта картопля, подається зі свіжою сметаною</p>
+                        </div>
+                        <span class="dish-price">155 ₴</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; opacity: 0.6; margin-top: 20px;" data-key="menu_note">*Ціни вказані для ознайомлення. Актуальне меню запитуйте у адміністратора.</p>
+        </div>
+    </section>
+
+    <section id="reviews">
         <div class="container">
             <h2 class="section-title" data-key="reviews_title">Відгуки наших гостей</h2>
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text" data-key="rev1_text">"Найсмачніший бограч у Яремче! Дуже затишна атмосфера та приємний персонал. Обов'язково повернемося."</p>
+                    <p class="review-text" data-key="rev1_text">"Найкращий ресторан у Яремче! Бограч просто божественний, а музиканти грають так, що хочеться танцювати всю ніч. Рекомендую!"</p>
                     <h4 class="reviewer-name" data-key="rev1_name">Олександр В.</h4>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
-                    <p class="review-text" data-key="rev2_text">"Святкували тут день народження. Бенкетний зал просторий, страви подали вчасно, а жива музика створила чудовий настрій."</p>
+                    <p class="review-text" data-key="rev2_text">"Відзначали тут корпоратив. Дуже просторий зал, все чисто, офіціанти професіонали. Страви подавали гарячими."</p>
                     <h4 class="reviewer-name" data-key="rev2_name">Олена М.</h4>
-                </div>
-                <div class="review-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="review-text" data-key="rev3_text">"Печеня по-гуцульськи просто неймовірна! Рекомендую всім туристам, які хочуть скуштувати справжню місцеву кухню."</p>
-                    <h4 class="reviewer-name" data-key="rev3_name">Михайло Т.</h4>
                 </div>
             </div>
         </div>
@@ -297,20 +351,21 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;" data-key="contact_title">Завітайте до нас</h2>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 30px;" data-key="contact_title">Контакти та адреса</h2>
                     <div class="contact-info">
                         <p>📍 <strong data-key="label_address">Адреса:</strong> <span data-key="val_address">вул. Свободи, 270, м. Яремче</span></p>
                         <p>📞 <strong data-key="label_phone">Телефон:</strong> <a href="tel:+380677955049">+38 (067) 795-50-49</a></p>
-                        <p>🎵 <strong data-key="label_music">Розваги:</strong> <span data-key="val_music">Жива музика (на замовлення)</span></p>
+                        <p>⏰ <strong data-key="label_hours">Робота:</strong> <span>Щодня 09:00 – 23:00</span></p>
+                        <p>🎵 <strong data-key="label_music">Музика:</strong> <span data-key="val_music">Жива музика під замовлення</span></p>
                     </div>
                 </div>
                 
                 <div class="map-container">
-                    <iframe src="https://maps.google.com/maps?q=Yaremche,%20vul.%20Svobody,%20270&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2645.163353982468!2d24.551695!3d48.453396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473723380d7a6e17%3A0x868b209e259e21df!2z0YDQtdGB0YLQvtGA0LDQvSDQotGD0YDQuNGB0YI!5e0!3m2!1suk!2sua!4v1710000000000!5m2!1suk!2sua" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
             <div class="copyright" data-key="copyright">
-                © 2026 Ресторан Турист. Всі права захищені.
+                © 2026 Ресторан "Турист" Яремче. Розробка сайту — студія <strong>Prime Script</strong>.
             </div>
         </div>
     </footer>
@@ -336,49 +391,54 @@
                 }
             });
 
-            // Оновлений словник перекладів з ВІДГУКАМИ
             const translations = {
                 ua: {
                     nav_about: "Про заклад", nav_menu: "Меню", nav_reviews: "Відгуки", nav_contacts: "Контакти",
-                    hero_title: "Справжній смак у серці Яремче",
-                    hero_desc: "Українська, домашня та європейська кухня. Жива музика та незабутня атмосфера для вашого відпочинку.",
+                    hero_title: "Ресторан \"Турист\" — смак традицій у серці Яремче",
+                    hero_desc: "Запрошуємо скуштувати справжню гуцульську та українську кухню. Домашній затишок, жива музика та найкращі страви Карпат чекають на вас щодня.",
                     hero_btn: "Забронювати столик",
-                    about_title: "Про ресторан",
-                    about_desc: "Ресторан \"Турист\" — це ідеальне місце для сімейних обідів, романтичних вечерь та гучних святкувань. Ми пропонуємо затишний бенкетний зал на 100 осіб, а для любителів вечірнього відпочинку працює кальянна та жива музика.",
-                    menu_title: "Популярні страви",
-                    dish1_name: "Бограч", dish1_desc: "Традиційний густий суп з кількома видами м'яса, паприкою та овочами.",
-                    dish2_name: "Банош з бринзою", dish2_desc: "Кукурудзяна каша, зварена на домашній сметані, подається з овечою бринзою та шкварками.",
-                    dish3_name: "Печеня по-гуцульськи", dish3_desc: "Деруни, соус, м'ясо та сир.",
+                    about_title: "Про наш ресторан в Яремче",
+                    about_desc: "Ресторан \"Турист\" — це легендарне місце в місті Яремче, де поєднуються карпатська гостинність та високий рівень обслуговування. Наш заклад ідеально підходить для тих, хто шукає, де смачно поїсти в Яремче.",
+                    menu_title: "Меню нашого ресторану",
+                    cat_first: "Перші страви", cat_main: "Основні страви",
+                    dish_bograch: "Бограч", desc_bograch: "Традиційний гострий суп з трьома видами м'яса",
+                    dish_borsch: "Борщ український", desc_borsch: "З яловичиною та сметаною",
+                    dish_yushka: "Грибна юшка", desc_yushka: "З білих карпатських грибів",
+                    dish_banosh: "Банош з бринзою та шкварками", desc_banosh: "Кукурудзяна крупа з овечою бринзою та шкварками",
+                    dish_pechenya: "Печеня по-гуцульськи", desc_pechenya: "М'ясо та гриби у горщику",
+                    dish_deruny: "Деруни зі сметаною", desc_deruny: "Золотиста картопля зі сметаною",
+                    menu_note: "*Ціни вказані для ознайомлення.",
                     reviews_title: "Відгуки наших гостей",
-                    rev1_text: "\"Найсмачніший бограч у Яремче! Дуже затишна атмосфера та приємний персонал. Обов'язково повернемося.\"", rev1_name: "Олександр В.",
-                    rev2_text: "\"Святкували тут день народження. Бенкетний зал просторий, страви подали вчасно, а жива музика створила чудовий настрій.\"", rev2_name: "Олена М.",
-                    rev3_text: "\"Печеня по-гуцульськи просто неймовірна! Рекомендую всім туристам, які хочуть скуштувати справжню місцеву кухню.\"", rev3_name: "Михайло Т.",
-                    contact_title: "Завітайте до нас",
+                    rev1_text: "\"Найкращий ресторан у Яремче! Бограч просто божественний!\"", rev1_name: "Олександр В.",
+                    rev2_text: "\"Дуже просторий зал, професійні офіціанти та дуже свіжі страви.\"", rev2_name: "Олена М.",
+                    contact_title: "Контакти та адреса",
                     label_address: "Адреса:", val_address: "вул. Свободи, 270, м. Яремче",
-                    label_phone: "Телефон:",
-                    label_music: "Розваги:", val_music: "Жива музика (на замовлення)",
-                    copyright: "© 2026 Ресторан Турист. Всі права захищені."
+                    label_phone: "Телефон:", label_hours: "Робота:", label_music: "Музика:", val_music: "Жива музика під замовлення",
+                    copyright: "© 2026 Ресторан \"Турист\" Яремче. Розробка сайту — студія Prime Script."
                 },
                 en: {
-                    nav_about: "About Us", nav_menu: "Menu", nav_reviews: "Reviews", nav_contacts: "Contacts",
-                    hero_title: "Authentic Taste in the Heart of Yaremche",
-                    hero_desc: "Ukrainian, homemade, and European cuisine. Live music and an unforgettable atmosphere for your relaxation.",
+                    nav_about: "About", nav_menu: "Menu", nav_reviews: "Reviews", nav_contacts: "Contacts",
+                    hero_title: "Turyst Restaurant — Traditions in Yaremche",
+                    hero_desc: "Experience authentic Hutsul and Ukrainian cuisine. Home comfort, live music, and the best Carpathian dishes await you.",
                     hero_btn: "Book a Table",
-                    about_title: "About the Restaurant",
-                    about_desc: "Restaurant 'Turyst' is the perfect place for family dinners, romantic evenings, and loud celebrations. We offer a cozy banquet hall for 100 people, and for evening entertainment, a hookah lounge and live music.",
-                    menu_title: "Popular Dishes",
-                    dish1_name: "Bograch", dish1_desc: "Traditional thick soup with several types of meat, paprika, and vegetables.",
-                    dish2_name: "Banosh with Bryndza", dish2_desc: "Corn porridge cooked in homemade sour cream, served with sheep bryndza cheese and cracklings.",
-                    dish3_name: "Hutsul Roast (Pechenia)", dish3_desc: "Potato pancakes, sauce, meat, and cheese.",
+                    about_title: "About Turyst Yaremche",
+                    about_desc: "Turyst Restaurant is a legendary place in Yaremche, combining Carpathian hospitality with high service. Ideal for everyone looking for authentic food.",
+                    menu_title: "Our Menu",
+                    cat_first: "First Courses", cat_main: "Main Courses",
+                    dish_bograch: "Bograch", desc_bograch: "Traditional thick soup with meat and paprika",
+                    dish_borsch: "Ukrainian Borsch", desc_borsch: "Beef soup served with sour cream",
+                    dish_yushka: "Mushroom Soup", desc_yushka: "Made with local white mushrooms",
+                    dish_banosh: "Banosh with Bryndza & Cracklings", desc_banosh: "Corn grits with sheep cheese and cracklings",
+                    dish_pechenya: "Hutsul Style Roast", desc_pechenya: "Meat and mushrooms in a clay pot",
+                    dish_deruny: "Potato Pancakes with Sour Cream", desc_deruny: "Crispy potato pancakes with sour cream",
+                    menu_note: "*Prices are for informational purposes.",
                     reviews_title: "Guest Reviews",
-                    rev1_text: "\"The most delicious bograch in Yaremche! Very cozy atmosphere and pleasant staff. We will definitely return.\"", rev1_name: "Alexander V.",
-                    rev2_text: "\"Celebrated a birthday here. The banquet hall is spacious, dishes were served on time, and live music created a great mood.\"", rev2_name: "Olena M.",
-                    rev3_text: "\"The Hutsul roast is simply incredible! I recommend it to all tourists who want to taste authentic local cuisine.\"", rev3_name: "Michael T.",
-                    contact_title: "Visit Us",
+                    rev1_text: "\"The best restaurant in Yaremche! Bograch is divine!\"", rev1_name: "Alexander V.",
+                    rev2_text: "\"Spacious hall, professional staff and very fresh food.\"", rev2_name: "Olena M.",
+                    contact_title: "Contacts & Address",
                     label_address: "Address:", val_address: "Svobody St, 270, Yaremche",
-                    label_phone: "Phone:",
-                    label_music: "Entertainment:", val_music: "Live music (on request)",
-                    copyright: "© 2026 Restaurant Turyst. All rights reserved."
+                    label_phone: "Phone:", label_hours: "Hours:", label_music: "Music:", val_music: "Live music on request",
+                    copyright: "© 2026 Turyst Yaremche. Built by Prime Script."
                 }
             };
 
